@@ -1,0 +1,24 @@
+@font-face {
+    font-family: "BebasNeue";
+    src: url("bebas-neue-regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Josefin-Sans-Light";
+    src: url("JosefinSans-Light.ttf");
+}
+
+@font-face {
+    font-family: "Josefin-Sans";
+    src: url("JosefinSans-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Adamina";
+    src: url('Adamina-Regular.ttf');
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url('Roboto-Regular.ttf');
+}

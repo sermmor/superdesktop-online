@@ -1,0 +1,27 @@
+{
+	"gameConfiguration": {
+		"width": 688,
+		"height": 387,
+		"gravity": -9.81,
+		"pools": {}
+	},
+	"Game-background": {
+		"transform": {
+			"position": {
+				"x": 344,
+				"y": 193.5,
+				"z": 0.1
+			},
+			"scale": {
+				"x": 0.359,
+				"y": 0.359
+			},
+			"childrenObjects": []
+		},
+		"sprite": {
+			"nameImage": "Rainbow49_garden_ingame.png",
+			"color": "(255,255,255,1)"
+		},
+		"isEnabled": true
+	}
+}

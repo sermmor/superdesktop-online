@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Superdesktop Demo</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            overflow: hidden;
+            /* background-color: #444477; */
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .canvasContainer {
+            width: 100vw;
+            height: 100vh;
+            /* background-color: #444477; */
+        }
+
+        .debug {
+            position: fixed;
+            display: flex;
+            top: 0;
+            /* top: 200px; */
+            flex-direction: column;
+            background-color: #000000;
+            color: #999;
+            user-select: none;
+        }
+
+        .debug-item {
+            display: inline-block;
+            border: 1px solid black;
+            padding: 5px;
+            overflow: hidden;
+        }
+
+        .debug-info-box {
+            display: flex;
+            padding: 2px;
+        }
+
+        .debug-info-box > .debug-info {
+            display: inline-block;
+            width: 70%;
+        }
+
+        .debug-info-box > .debug-info + input {
+            display: inline-block;
+            width: 30%;
+            background-color: #3c3c3c;
+            border: 0;
+            color: #2fa1d6;
+            text-align: right;
+        }
+
+        .line-chart
+        {
+            border: 1px solid lightgray;
+            background-color: white;
+        }
+    </style>
+    <link rel="stylesheet" href="./fonts/superdesktop-fonts.css" />
+</head>
+<body style='background: #f4f4f4;margin:0px'>
+    <!-- <h1>Superdesktop Demo</h1> -->
+    <div class="canvasContainer"></div>
+    <dialog id="loadingDialog">
+        <p>Loading...</p>
+        <progress id="loadingProgress"></progress>
+        <p><label id="loadingInfo"></label></p>
+    </dialog>
+    <div class="debug">
+        <div class="debug-item">
+            <div class="debug-info-box"><span class="debug-info">FPS</span> <input id="fps" valur="0" readonly /></div>
+        </div>
+        <div class="debug-item">
+            <div class="debug-info-box">
+                <div class="debug-info">Has effects</div>
+                <input type="checkbox" id="blurEnable" checked/>
+            </div>
+            <div class="debug-info-box">
+                <div class="debug-info">Has AE Animations</div>
+                <input type="checkbox" id="AEAnimationsEnable" checked/>
+            </div>
+            <div class="debug-info-box">
+                <div class="debug-info">Language</div>
+                <select id="languageSelected" value="EN">
+                    <option value="EN">EN</option>
+                    <option value="ES">ES</option>
+                    <option value="KA">KA</option>
+                    <option value="RU">RU</option>
+                    <option value="UK">UK</option>
+                </select>
+            </div>
+            <div class="debug-info-box">
+                <div class="debug-info">Is win</div>
+                <input type="checkbox" id="isWinEnable" checked/>
+            </div>
+        </div>
+        <button id="start">Start</button>
+        <button id="restart">Restart</button>
+        <button id="disableEnable">Disable/Enable</button>
+        <button id="hideShow">Hide</button>
+    </div>
+</body>
+</html>

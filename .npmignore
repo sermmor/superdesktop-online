@@ -1,0 +1,5 @@
+*
+!dist/**/*
+!fonts/**/*
+!doc/**/*
+!index.d.ts

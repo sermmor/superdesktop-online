@@ -1,2 +1,1 @@
-# superdesktop-online
-Is an inteligent graphical launcher for links and folders, using a complete virtual desktop manager.
+This is a readme.md. If you want view documentation, please, see `doc` folder
