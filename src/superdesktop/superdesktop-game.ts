@@ -63,6 +63,9 @@ export const startSuperdesktopGame = async (
 ): Promise<void> => {
   // const dataShared = <SuperdesktopDataShared> Game.instance.dataShared;
   await superdesktopScene.start(divCanvas, size, backgroundColor);
+  
+  divCanvas.onclick = (ev) => console.log('x', ev.x, 'y', ev.y); // TODO: Para mover un objeto.
+  divCanvas.ondblclick = (ev) => console.log('DOBLE CLIC'); // TODO: Para abrir un objeto (p.e: lanzar una web en marcador o ver imagen).
 };
 
 export const setOnGameFinished = (onGameFinishedCallback: () => void) => {
