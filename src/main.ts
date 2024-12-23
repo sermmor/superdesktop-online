@@ -1,5 +1,5 @@
 import { Game, MockNgZone, MockNgZoneWithTimeout, Scene } from "webfront-graphics-core-engine";
-import { SuperdesktopProperties } from "./superdesktop/superdesktop-game";
+import { buildSuperdesktopGame, startSuperdesktopGame, SuperdesktopProperties } from "./superdesktop/superdesktop-game";
 import { buildDebugDialog, applyHidden } from "./debug";
 // import { GAME_SCENE_NAME } from "./superdesktop/common-constants";
 
@@ -14,55 +14,54 @@ const canvasContainer = document.querySelector('.canvasContainer') as HTMLElemen
 
 
 const onLoading = () => {
-    (<any> loadingProgressInput).value = Game.instance.totalAssetsLoaded;
-    loadingInfoInput.innerHTML = `Loaded ${Game.instance.currentLoadingProgressPercent.toFixed(2)} % (${Game.instance.totalAssetsLoaded} of ${Game.instance.totalAssetsToLoad})`;
+  (<any> loadingProgressInput).value = Game.instance.totalAssetsLoaded;
+  loadingInfoInput.innerHTML = `Loaded ${Game.instance.currentLoadingProgressPercent.toFixed(2)} % (${Game.instance.totalAssetsLoaded} of ${Game.instance.totalAssetsToLoad})`;
 }
 
 const onLoadingCompleted = () => {
-    (<any> loadingProgressInput).value = Game.instance.totalAssetsLoaded;
-    loadingInfoInput.innerHTML = "Loading completed. Please wait.";
+  (<any> loadingProgressInput).value = Game.instance.totalAssetsLoaded;
+  loadingInfoInput.innerHTML = "Loading completed. Please wait.";
 }
 
 const prepareLoading = (totalFiles: number) => {
-    loadingInfoInput.innerHTML = "";
-    (<any> loadingProgressInput).value = 0;
-    (<any> loadingProgressInput).max = totalFiles;
-    (<any> loadingDialogInput).showModal();
+  loadingInfoInput.innerHTML = "";
+  (<any> loadingProgressInput).value = 0;
+  (<any> loadingProgressInput).max = totalFiles;
+  (<any> loadingDialogInput).showModal();
 }
 
 
 const getAssetsNormal = (): string[] => [
-    
+  'assets/Wallpaper-initial.jpg',
 ];
 
 const createSuperdesktop = (): Promise<Scene> => {
-    const loading = { onLoading, onLoadingCompleted, };
-    const gameProperties: SuperdesktopProperties = {
-        imageAsssetPaths:  getAssetsNormal(),
-        languageCode: languageSelectedInput.value,
-        ngZone: new MockNgZoneWithTimeout(), // new MockNgZone()
-        // isDebuggerAllowed: true,
-        // isDebuggerTraceEnabled: true,
-        loading,
-    };
+  const loading = { onLoading, onLoadingCompleted, };
+  const gameProperties: SuperdesktopProperties = {
+    imageAsssetPaths:  getAssetsNormal(),
+    languageCode: languageSelectedInput.value,
+    // isDebuggerAllowed: true,
+    // isDebuggerTraceEnabled: true,
+    loading,
+  };
 
-    prepareLoading(gameProperties.imageAsssetPaths.length);
-    return buildSuperdesktopGame(gameProperties);
-}
-
-let the20BallsToShow: string[];
+  prepareLoading(gameProperties.imageAsssetPaths.length);
+  return buildSuperdesktopGame(gameProperties);
+};
 
 const main = async () => {
-    const scene = await createSuperdesktop(true);
-    isSuperdesktopLoaded = true;
-    const sizeCanvas = {};
-    startSuperdesktopGame(canvasContainer, scene, sizeCanvas, true, "#444477").then(() => {
-        
-    });
+  const scene = await createSuperdesktop();
+  isSuperdesktopLoaded = true;
+  const sizeCanvas = {};
+  startSuperdesktopGame(canvasContainer, scene, sizeCanvas, "#444477").then(() => {
+    let isSuperdesktopReady = true;
+    // TODO: Do something ? (the user can move and change the desktop)
+    (<any> loadingDialogInput).close();
+  });
 
-    // buildDebugDialog(false);
-    buildDebugDialog();
-    applyHidden();
+  // buildDebugDialog(false);
+  buildDebugDialog();
+  applyHidden();
 }
 
 main();

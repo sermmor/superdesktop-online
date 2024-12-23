@@ -4,4 +4,4 @@ export {
 
 export {
     
-} from "./superdesktop-shared";
+} from "./superdesktop-data-shared";
