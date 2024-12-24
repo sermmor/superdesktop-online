@@ -33,6 +33,7 @@ const prepareLoading = (totalFiles: number) => {
 
 const getAssetsNormal = (): string[] => [
   'assets/Wallpaper-initial.jpg',
+  'assets/cat.jpeg',
 ];
 
 const createSuperdesktop = (): Promise<Scene> => {

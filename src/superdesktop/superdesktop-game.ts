@@ -63,8 +63,24 @@ export const startSuperdesktopGame = async (
 ): Promise<void> => {
   // const dataShared = <SuperdesktopDataShared> Game.instance.dataShared;
   await superdesktopScene.start(divCanvas, size, backgroundColor);
-  
-  divCanvas.onclick = (ev) => console.log('x', ev.x, 'y', ev.y); // TODO: Para mover un objeto.
+
+  divCanvas.onauxclick = (ev) => {
+    if (ev.button === 2) {
+      // TODO: Menu right clic.
+      console.log("RIGHT")
+    } else if (ev.button === 1) {
+      // TODO: Middle clic. (Open a object/link?)
+      console.log("MIDDLE")
+    }
+  }
+  divCanvas.onclick = (ev) => {
+    // TODO: Para mover un objeto.
+    console.log(superdesktopScene.size)
+    
+    console.log("Position pointer in scene (x)", ev.x / superdesktopScene.sceneObjectToScreenProportion.x)
+    console.log("Position pointer in scene (y)", ev.y / superdesktopScene.sceneObjectToScreenProportion.y)
+  };
+                                                            // TODO Fíjate que hay que traducir este X e Y a posiciones de GameObject
   divCanvas.ondblclick = (ev) => console.log('DOBLE CLIC'); // TODO: Para abrir un objeto (p.e: lanzar una web en marcador o ver imagen).
 };
 
